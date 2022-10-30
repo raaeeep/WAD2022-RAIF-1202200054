@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
 </head>
 <body>
+
+<?php 
+  $img_src = ["assets/pic1.jpg", "assets/pic2.png", "assets/pic3.png"];
+?>
+
     <!-- navbar -->
     <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
         <div class="container-fluid">
@@ -17,10 +22,10 @@
           <div class="collapse navbar-collapse justify-content-center d-flex" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">Home</a>
+                <a class="nav-link" aria-current="page" href="index.php">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="booking.html">Booking</a>
+                <a class="nav-link" href="booking.php">Booking</a>
               </li>
             </ul>
           </div>
@@ -41,7 +46,7 @@
                 <div class="card text-bg-light">
                     <div class="row">
                         <div class="col">
-                        <img src="assets/pic1.jpg" class="card-img-top" alt="RUSH">
+                        <img src=<?=$img_src[0]?> class="card-img-top" alt="Innova">
                           <div class="card-body">
                             <h5 class="card-title">Toyota Kijang Innova</h5>
                             <p class="card-text">Rp 200.000 / Day</p>
@@ -55,7 +60,7 @@
                             </ul>
                             </div>
                             <div class="card-body text-bg-light mb-3 text-center">
-                                <a href="#" class="btn btn-primary">Book now</a>
+                                <a href="booking.php" class="btn btn-primary">Book now</a>
                             </div>
                         </div>
                     </div>
@@ -65,7 +70,7 @@
                 <div class="card text-bg-light">
                     <div class="row">
                         <div class="col">
-                        <img src="assets/pic2.png" class="card-img-top" alt="AYLA">
+                        <img src=<?=$img_src[1]?> class="card-img-top" alt="Fortuner">
                           <div class="card-body">
                             <h5 class="card-title">Toyota Fortuner Model Y</h5>
                             <p class="card-text">Rp 500.000 / Day</p>
@@ -79,7 +84,7 @@
                             </ul>
                             </div>
                             <div class="card-body text-bg-light mb-3 text-center">
-                                <a href="#" class="btn btn-primary">Book now</a>
+                                <a href="booking.php" class="btn btn-primary">Book now</a>
                             </div>
                         </div>           
                     </div>
@@ -89,7 +94,7 @@
                 <div class="card text-bg-light">
                     <div class="row">
                         <div class="col">
-                        <img src="assets/pic3.png" class="card-img-top" alt="BRIO">
+                        <img src=<?=$img_src[2]?> class="card-img-top" alt="Koenigsegg">
                           <div class="card-body">
                             <h5 class="card-title">Koenigsegg Agera RS</h5>
                             <p class="card-text">Rp 900.000 / Day</p>
@@ -103,7 +108,7 @@
                             </ul>
                             </div>
                             <div class="card-body text-bg-light mb-3 text-center">
-                                <a href="#" class="btn btn-primary">Book now</a>
+                                <a href="booking.php" class="btn btn-primary">Book now</a>
                             </div>
                         </div>
                     </div>

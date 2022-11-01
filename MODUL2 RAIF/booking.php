@@ -12,7 +12,7 @@
 <?php
     if (isset($_POST["booking"])) {
         $mobil = $_POST["booking"];
-        if ($mobil == "innova") {
+        if ($mobil == "innova") { 
             $image = "assets/pic1.jpg";
         }elseif ($mobil == "fortuner") {
             $image = "assets/pic2.png";
@@ -74,7 +74,7 @@
               <input type="time" class="form-control" name="startTime" placeholder="">
             </div>
             <div class="col-12">
-              <label for="inputDuration" class="form-label">Duration (Days)</label>
+              <label for="inputDuration" class="form-label">Duration (Days After)</label>
               <input type="number" class="form-control" name="duration">
             </div>
             

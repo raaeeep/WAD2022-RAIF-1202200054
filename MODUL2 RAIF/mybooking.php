@@ -12,11 +12,11 @@
 <?php 
   $BookingNumber = $_POST[""];
   $name = $_POST["name"];
-  $bookDate = $_POST["bookDate"];
+  $BOOKDATE = $_POST["bookDate"];
   $startTime = $_POST["startTime"];
   $duration = $_POST["duration"];
   $TipeMobil = $_POST["TipeMobil"];
-  $phoneNumber = $_POST["phoneNumber"];
+  $NUMBERPHONE = $_POST["phoneNumber"];
   $gridCheck = $_POST["gridCheck"];
   $price = $_POST["price"];
 ?>
@@ -62,7 +62,7 @@
                 <td><?php echo $name ?></td>
                 <td><?php echo $bookDate ?></td>
                 <td><?php echo $duration ?></td>
-                <td><?php echo $TipeMobil ?></td>
+                <td><?php echo $TIPEMOBIL ?></td>
                 <td><?php echo $phoneNumber ?></td>
                 <td><?php echo $gridCheck ?></td>
                 <td><?php echo $price ?></td>

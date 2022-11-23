@@ -10,9 +10,9 @@ $connect = mysqli_connect("localhost","root","","modul3");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MODUL3 WAD RAIF FAWWAZDZAKY</title>
 
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../bootstrap/css/style.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 <body>
 </head>
@@ -24,8 +24,8 @@ $connect = mysqli_connect("localhost","root","","modul3");
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="Home-Raif.php">Home</a>
-        <a class="nav-link" href="Add-Raif.php">MyCar</a>
+        <a class="nav-link active" aria-current="page" href="pages/Home-Raif.php">Home</a>
+        <a class="nav-link" href="pages/Add-Raif.php">MyCar</a>
       </div>
     </div>
   </div>
@@ -37,10 +37,11 @@ $connect = mysqli_connect("localhost","root","","modul3");
     <div class="col-5">
         <h1>Selamat Datang Di Show Room Raif</h1>
         <p>best car for everybody!</p>
-        <button type="button" class="btn btn-primary">MyCar</button>
+        <!-- <button type="button" class="btn btn-primary">MyCar</button> -->
+        <a href="pages/ListCar-Raif.php" class="btn btn-primary">MyCar</a>
         <div class="row align-item-center mt-4">
             <div class="col-sm-3">
-                <img src="../assets/logo-ead.png" alt="" class="img-fluid" >
+                <img src="assets/logo-ead.png" alt="" class="img-fluid" >
             </div>
             <div class="col-sm-8 mt-1" style="">
                 <p style="font-size:13px;">Raif Fawwazdzaky_1202200054</p>
@@ -48,7 +49,7 @@ $connect = mysqli_connect("localhost","root","","modul3");
         </div>
     </div>
     <div class="col-6">
-        <img src="../assets/pic2.png" alt="" class="img-fluid">
+        <img src="assets/pic2.png" alt="" class="img-fluid">
     </div>
   </div>
 </div>

@@ -1,5 +1,5 @@
 <?php
 
-require "pages/Home-Raif.php"
+require "pages/Home-Raif.php";
 
 ?>

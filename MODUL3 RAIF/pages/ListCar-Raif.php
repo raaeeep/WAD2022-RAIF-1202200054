@@ -20,10 +20,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" aria-current="page" href="Home-Raif.php">Home</a>
-        <a class="nav-link" href="Add-Raif.php">MyCar</a>
-        <button type="button" style="width: 100px;position:relative;left:1000px;" class="btn btn-light fw-bold">
-        <a href="Add-Raif.php">Add Car</a></button>
+        <a class="nav-link" aria-current="page" href="../index.php">Home</a>
+        <a class="nav-link active" href="Add-Raif.php">MyCar</a>
+        <a href="Add-Raif.php" style="width: 100px;position:relative;left:1000px;" class="btn btn-light fw-bold">Add Car</a>
       </div>
     </div>
   </div>
@@ -34,22 +33,118 @@
     <h1>My Showroom</h1>
     <p>List Showroom RAIF - 1202200054</p>
     <div class="row">
-        <div class="col">
-        <div class="card mt-2" style="width: 18rem;">
-            <img src="../assets/pic2.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <?php
+        include '../config/connect.php';
+        $query = "SELECT * FROM showroom_raif_table ORDER BY id_mobil ASC";
+        $show = mysqli_query($connect,$query);
+        while ($data = mysqli_fetch_array($show)) {
+      ?>
+          <div class="col">
+            <div class="card mt-2" style="width: 18rem;margin-bottom:25px;">
+              <img src="../assets/upload-img/<?php echo $data['foto_mobil'];?>" class="card-img-top"  style="min-height:200px;">
+              <div class="card-body"  style="max-height:200px;">
+                <h5 class="card-title"><?php echo $data['nama_mobil'];?></h5>
+                <p class="card-text"><?php echo $data['deskripsi'];?></p>
                 <div class="container px-5">
-                    <a href="#" class="btn btn-primary">Edit</a>
-                    <a href="#" class="btn btn-danger">Delete</a>
+                  <a href="../pages/Detail-Raif.php?id_mobil=<?php echo $data['id_mobil'];?>" class="btn btn-primary">Detail</a>
+                  <a href="../config/delete.php?id_mobil=<?php echo $data['id_mobil'];?>" class="btn btn-danger">Delete</a>
                 </div>
+              </div>
             </div>
-            </div>
-        </div>
+          </div>
+        <?php  } ?>
     </div>
+    <?php
+        //Validasi untuk menampilkan pesan pemberitahuan
+        if (isset($_GET['update'])) {
+      
+            if ($_GET['update']=='berhasil'){
+                echo "
+                <div class='container d-flex justify-content-end' style='position:fixed;bottom:0;right:0;'>
+                    <div class='toast show' role='alert' aria-live='assertive' aria-atomic='true'>
+                    <div class='toast-header'>
+                    
+                        <svg class='placeholder col-1 rounded me-2 bg-warning' width='20' height='20' xmlns='http://www.w3.org/2000/svg' aria-hidden='true' preserveAspectRatio='xMidYMid slice' focusable='false'><rect width='100%' height='100%' fill='#007aff'></rect>
+                        </svg>
+            
+                        <strong class='me-auto'>Alert Update !</strong>
+                        <small>11 mins ago</small>
+                        <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+                    </div>
+                    <div class='toast-body'>
+                        Data Berhasil Diupdate. :)
+                    </div>
+                    </div>
+                </div>
+                ";
+            }else if ($_GET['add']=='gagal'){
+                echo"<div class='alert alert-danger'><strong>Gagal!</strong> File gambar gagal diupload!</div>";
+            }    
+        }
+
+        if (isset($_GET['add'])) {
+      
+            if ($_GET['add']=='berhasil'){
+                echo "
+                <div class='container d-flex justify-content-end' style='position:fixed;bottom:0;right:0;'>
+                    <div class='toast show' role='alert' aria-live='assertive' aria-atomic='true'>
+                    <div class='toast-header'>
+                    
+                        <svg class='bd-placeholder-img rounded me-2' width='20' height='20' xmlns='http://www.w3.org/2000/svg' aria-hidden='true' preserveAspectRatio='xMidYMid slice' focusable='false'><rect width='100%' height='100%' fill='#007aff'></rect>
+                        </svg>
+            
+                        <strong class='me-auto'>Alert Add Car !</strong>
+                        <small>11 mins ago</small>
+                        <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+                    </div>
+                    <div class='toast-body'>
+                        Data Berhasil Ditambahkan. :)
+                    </div>
+                    </div>
+                </div>
+                ";
+            }else if ($_GET['add']=='gagal'){
+                echo"<div class='alert alert-danger'><strong>Gagal!</strong> File gambar gagal diupload!</div>";
+            }    
+        }
+
+
+        if (isset($_GET['hapus'])) {
+    
+            if ($_GET['hapus']=='berhasil'){
+                echo"
+                <div class='container d-flex justify-content-end' style='position:fixed;bottom:0;right:0;'>
+                    <div class='row'>
+                        <div class='toast show' role='alert' aria-live='assertive' aria-atomic='true'>
+                        <div class='toast-header'>
+                        
+                            <span class='placeholder col-1 rounded me-2 bg-danger' width='20' height='20' xmlns='http://www.w3.org/2000/svg' aria-hidden='true' preserveAspectRatio='xMidYMid slice' focusable='false'><rect width='100%' height='100%' fill='#007aff'></rect>
+                            </span>
+                
+                            <strong class='me-auto'>Alert Hapus Data Car !</strong>
+                            <small>11 mins ago</small>
+                            <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+                        </div>
+                        <div class='toast-body'>
+                            Data Car  Berhasil Dihapus. :)
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                ";
+            }else if ($_GET['hapus']=='gagal'){
+                echo"<div class='alert alert-danger'><strong>Gagal!</strong> File gambar gagal dihapus!</div>";
+            }    
+        }
+        ?>
+    <?php
+  
+    $carData = mysqli_query($connect,"SELECT * FROM showroom_raif_table");
+    $countCar = mysqli_num_rows($carData);
+
+    ?>
     <div class="container mt-5">
-        <p class="fw-bold opacity-50 fixed-bottom px-3">Jumlah Mobil :</p>
+        <p class="fw-bold opacity-50 fixed-bottom px-3">Jumlah Mobil : <?php echo "$countCar" ?></p>
     </div>
 </div>
 

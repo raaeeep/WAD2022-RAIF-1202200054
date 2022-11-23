@@ -17,65 +17,71 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" aria-current="page" href="Home-Raif.php">Home</a>
-        <a class="nav-link" href="#">MyCar</a>
+        <a class="nav-link" aria-current="page" href="../index.php">Home</a>
+        <a class="nav-link active" href="ListCar-Raif.php">MyCar</a>
       </div>
     </div>
   </div>
 </nav>
 <!-- navbar akhir -->
-<div class="container mt-5">
-    <form>
-    <div class="row">
-        <!-- gambar -->
-        <div class="col">
-            <div class="d-flex align-items:center mt-2">
-            <img src="../assets/pic2.png" class="card-img-top" alt="Innova">
-            </div>
-        </div>
-        <!-- akhir gambar -->
-        <!-- detail -->
-        <div class="col">
-            <form class="mt-5" style="margin-right:250px">
+
+<?php 
+    include '../config/connect.php';
+
+    $id_mobil = $_GET['id_mobil'];
+    $sql = "SELECT * FROM showroom_raif_table where id_mobil ='$id_mobil'";
+    $tampilData = mysqli_query($connect,$sql);
+    while ($data = mysqli_fetch_array($tampilData)) {
+?>
+
+<div class="container mt-5 px-3" style="margin-bottom:100px">
+    <h3 class="fw-bold">Ubah Data Mobil</h3>
+    <p>Ubah Data Mobil Anda</p>
+        <form action="../config/update.php?id_mobil=<?php  echo $data['id_mobil'];?>" method="POST" class="mt-5" style="margin-right:250px" enctype="multipart/form-data">
+            <!-- NAMA MOBIL -->
             <div class="mb-3">
                 <label for="nama_mobil" class="form-label fw-bold">Nama Mobil</label>
-                <input type="text" class="form-control" id="nama_mobil">  
+                <input type="text" class="form-control" name="nama_mobil" placeholder="Silahkan masukan nama mobilmu!" value="<?php echo $data['nama_mobil']; ?>">
             </div>
+            <!-- NAMA MOBIL -->
             <div class="mb-3">
-                <label for="nama_pemilik" class="form-label fw-bold">Nama Pemilik</label>
-                <input type="text" class="form-control" id="nama_pemilik">  
+                <label for="pemilik_mobil" class="form-label fw-bold">Pemilik Mobil</label>
+                <input type="text" class="form-control" name="pemilik_mobil" placeholder="Silahkan masukan nama mobilmu!" value="<?php echo $data['pemilik_mobil']; ?>">
             </div>
+            <!-- MERK MOBIL -->
             <div class="mb-3">
-                <label for="merk" class="form-label fw-bold">Merk</label>
-                <input type="text" class="form-control" id="merk" placeholder="Silahkan masukan nama merkmu!">  
+                <label for="merk" class="form-label fw-bold">Merk Mobil</label>
+                <input type="text" class="form-control" name="merk" placeholder="Silahkan masukan nama mobilmu!" value="<?php echo $data['merk_mobil']; ?>">
             </div>
+            <!-- TANGGAL BELI MOBIL -->
             <div class="mb-3">
-                <label for="tanggal_beli" class="form-label fw-bold">Tanggal Beli</label>
-                <input type="date" class="form-control" id="tanggal_beli">  
+                <label for="tanggal_beli" class="form-label fw-bold">Tanggal Beli Mobil</label>
+                <input type="date" class="form-control" name="tanggal_beli" placeholder="" value="<?php echo $data['tanggal_beli']; ?>">
             </div>
+            <!-- DESKRIPSI MOBIL -->
             <div class="mb-3">
-                <label for="deskripsi" class="form-label fw-bold">Deskripsi</label>
-                <textarea class="form-control" name="deskripsi" id="deskripsi" rows="3"></textarea>
+                <label for="deskripsi" class="form-label fw-bold">Deskripsi Mobil</label>
+                <textarea class="form-control" name="deskripsi" rows="3" 
+                    placeholder="Contoh: Mobil ini adalah yang terbaik dimasanya ..."><?php echo $data['deskripsi']; ?></textarea>
             </div>
+            <!-- FOTO MOBIL -->
             <div class="mb-3">
                 <label for="foto" class="form-label fw-bold">Foto</label>
-                <input type="file" class="form-control" id="foto">  
+                <input type="file" name="foto" class="form-control">
             </div>
-            <div>
-                <label for="status_pembayaran" class="form-label fw-bold">Status Pembayaran</label>
-            </div>
+            <!-- STATUS -->            
             <div class="mb-5 px-2">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="lunas">
+                <input class="form-check-input" type="radio" name="status" value="lunas">
                 <label class="form-check-label" for="lunas">Lunas</label>
-                <input class="form-check-input ms-5" type="radio" name="flexRadioDefault" id="lunas">
+                <input class="form-check-input ms-5" type="radio" name="status" value="belum lunas">
                 <label class="form-check-label" for="lunas">Belum Lunas</label>
             </div>
-            <button type="submit" class="btn btn-primary">Selesai</button>
-            </form>
-            <!-- akhir detail -->
-        </div>
-    </div>
-    </div>
-    <!-- akhir form -->
+            <button type="submit" value="submit" name="submit" class="btn btn-primary">Selesai</button>
+        </form>
+</div>
+
+    <?php } ?>
+
+
 <!-- akhir detail -->
 <!-- akhir content -->

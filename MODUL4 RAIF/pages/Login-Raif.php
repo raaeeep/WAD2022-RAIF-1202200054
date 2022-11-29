@@ -19,7 +19,7 @@ if (isset($_POST["login"])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-    $result = mysqli_query($connect, "SELECT * FROM users_raif WHERE
+    $result = mysqli_query($connect, " users_raif WHERE
         email = '$email'");
 
 
@@ -77,7 +77,7 @@ $error = true;
         <div class="col-6 px-5" style="margin-top:150px;">
             <h1>Login</h1>
             <div class="pe-5">
-                <form action="" method="POST">
+                <form action="" >
                     <!-- cek error -->
                     <?php if(isset($error)): ?>
                         <p style="color:red;font-style:italic;">Email / Password Salah</p>

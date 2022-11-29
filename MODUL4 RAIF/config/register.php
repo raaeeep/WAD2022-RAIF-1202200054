@@ -27,10 +27,10 @@ if (isset($_POST['register'])){
             $password = password_hash($password1,PASSWORD_DEFAULT);
 
             // masukan data
-            mysqli_query($connect, " users_raif VALUES ('','$nama','$email','$password','$no_hp')");
+            mysqli_query($connect, "INSERT INTO users_raif VALUES ('','$nama','$email','$password','$no_hp')");
             echo "<script>
             alert('Registrasi Berhasil!');
-            window.location = 'Login-Raif.php';
+            window.location = '../pages/Login-Raif.php';
         </script>";
         }
     }

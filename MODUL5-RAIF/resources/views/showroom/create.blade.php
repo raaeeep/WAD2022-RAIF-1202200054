@@ -47,16 +47,12 @@
             <div class="mb-5 px-2">
                 <input class="form-check-input" type="radio" name="status" value="lunas">
                 <label class="form-check-label" for="lunas">Lunas</label>
-                <input class="form-check-input ms-5" type="radio" name="status" value="belum lunas">
+                <input class="form-check-input ms-5" type="radio" name="status" value="Belum_Lunas">
                 <label class="form-check-label" for="lunas">Belum Lunas</label>
             </div>
             <button type="submit" value="submit" name="submit" class="btn btn-primary">Selesai</button>
         </form>
 </div>
 <!-- akhir form -->
-
-
-@auth
-@endauth
 
 @endsection

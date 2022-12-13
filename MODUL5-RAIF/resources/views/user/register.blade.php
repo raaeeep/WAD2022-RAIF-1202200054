@@ -4,7 +4,7 @@
 <body>
     <div class="row" style="width:100">
         <div class="col-6">
-            <img src="assets/wallpaper.png" alt="" style="width:650px;height:640px;">
+            <img src="assets/wallpaper.png" style="width:650px;height:640px;">
         </div>
         <div class="col-6 px-5" style="margin-top:25px;">
             <h1 class="mb-4">Registration</h1>

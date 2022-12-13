@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Showroom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ShowroomController extends Controller
 {
@@ -44,10 +45,15 @@ class ShowroomController extends Controller
             $resorce       = $request->file('image');
             $name   = $resorce->getClientOriginalName();
             $resorce->move(\base_path() ."/public/assets/upload-img", $name);
-            $save = DB::table('tb_showroom')->insert(['image' => $name,'name'=>$request->name,'owner'=>$request->owner, 'brand'=>$request->brand, 'purchase_date' => $request->purchase_date,
-            'description'=>$request->description, 'status'=>$request->status]);
-            echo "Data berhasil di upload";
-            return redirect('/showroom')->with('success', 'Data Berhasil Ditambahkan!');
+            $save = DB::table('tb_showroom')->insert([
+                'image' => $name,
+                'name'=>$request->name,
+                'owner'=>$request->owner,
+                'brand'=>$request->brand,
+                'purchase_date' => $request->purchase_date,
+                'description'=>$request->description, 
+                'status'=>$request->status]);
+            return redirect('showroom')->with('success', 'Data Berhasil Ditambahkan!');
         }else{
             echo "Gagal upload Data";
         }
@@ -62,10 +68,9 @@ class ShowroomController extends Controller
     public function detail($id)
     {
         $post = Showroom::findOrFail($id);
-        dd($post);
-        // return view('showroom.detail',['title' => 'Detail'], [
-        //         'post' => $post
-        // ]);
+        return view('showroom.detail',['title' => 'Detail'], [
+                'post' => $post
+        ]);
     }
 
     /**
@@ -89,9 +94,35 @@ class ShowroomController extends Controller
      * @param  \App\Models\Showroom  $showroom
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Showroom $showroom)
+    public function update(Request $request,Showroom $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'owner' => 'required',
+            'brand' => 'required',
+            'purchase_date' => 'required',
+            'description' => 'required',
+            'status' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,svg',
+        ]);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $image->storeAs('public/assets/upload-img/', $image->hasName());
+
+            Storage::delete('public/foto/'. $id->image);
+
+            $id->update([
+                'image' => $image->hasName(),
+                'name' => $request->name,
+                'description' => $request->description,
+            ]);
+        }else{
+            $id->update([
+                'name' => $request->nama,
+                'description' => $request->description
+            ]);
+        }
     }
 
     /**
@@ -100,8 +131,12 @@ class ShowroomController extends Controller
      * @param  \App\Models\Showroom  $showroom
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Showroom $showroom)
+    public function destroy(Showroom $id)
     {
-        //
+        Storage::delete('public/assets/upload-img/'.$id->image);
+
+        $id->delete();
+
+        return redirect()->route('showroom.index')->with('success', 'Data Berhasil Dihapus!');;
     }
 }

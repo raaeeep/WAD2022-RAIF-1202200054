@@ -23,7 +23,7 @@
         </div>
         <div class="navbar-nav ms-auto mb-lg-0">
         <!-- dropdown box -->
-        <a class="btn btn-light text-primary" href="Add-Raif.php" role="button" style="margin-right:15px;">Add Car</a>
+        <a class="btn btn-light text-primary" href="{{ route('showroom.create') }}" role="button" style="margin-right:15px;">Add Car</a>
             <div class="dropdown">
             <button class="btn btn-light dropdown-toggle text-primary" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown">
             </button>

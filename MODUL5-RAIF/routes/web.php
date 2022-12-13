@@ -1,9 +1,11 @@
 <?php
-
-use App\Http\Controllers\ShowroomController;
-use App\Http\Controllers\UserController;
-use App\Models\Showroom;
 use Illuminate\Support\Facades\Route;
+
+
+// use App\Http\Controllers\ShowroomController;
+use App\Http\Controllers\ShowroomController;
+use App\Models\Showroom;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +34,9 @@ Route::resource('showroom', ShowroomController::class);
 
 Route::get('detail', [ShowroomController::class, 'detail'])->name('detail');
 
-Route::get('/showroom/detail/{id}', [ShowroomController::class, 'detail']);
-Route::get('/showroom/edit/{id}', [ShowroomController::class, 'edit']);
-Route::post('/showroom/update/{id}', [ShowroomController::class, 'update']);
+Route::get('showroom/detail/{id}', [ShowroomController::class, 'detail'])->name('detail-car');
+Route::get('showroom/edit/{id}', [ShowroomController::class, 'edit'])->name('edit-car');
+
+
+Route::post('showroom/update/{id}', [ShowroomController::class, 'update']);
+Route::post('showroom/delete/{id}', [ShowroomController::class, 'destroy'])->name('delete-car');
